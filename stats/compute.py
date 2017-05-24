@@ -25,14 +25,25 @@ def check_files():
 
 
 def calculate(input, output):
+
+    t0_values = []
+    t1_values = []
+
+    for line in input:
+        t0, t1 = line.split()
+
+        t0_values.append(t0)
+        t1_values.append(t1)
+
+    calc_mean(t0_values, t1_values, output)
+    calc_stddev(t0_values, t1_values, output)
+
+
+def calc_mean(t0_values, t1_values, output):
     pass
 
 
-def calc_mean():
-    pass
-
-
-def calc_stddev():
+def calc_stddev(t0_values, t1_values, output):
     pass
 
 
