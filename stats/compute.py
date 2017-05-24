@@ -1,4 +1,5 @@
 import gc
+from sys import stdout
 from time import clock
 from statistics import mean as py_mean
 
@@ -12,6 +13,15 @@ logs = {
     "median": "median.log"
 }
 
+def save_times(times, file_name):
+    """ Writes the computed times in given file """
+
+    with open(file_name, "a") as file:
+        file.write(times)
+
+    print >> stdout, times
+
+
 def compute_mean(input_list):
    """ Compute time execution of each module """
 
@@ -23,12 +33,12 @@ def compute_mean(input_list):
     mean(input_list)
     end_mean = clock()
 
-    with open(logs['mean'], "a") as file:
-        file.write("%f %f\n" % (
-                abs(end_py_mean - begin_py_mean),
-                abs(begin_mean - end_mean)
-            )
-        )
+    times = "%f %f\n" % (
+        abs(end_py_mean - begin_py_mean),
+        abs(begin_mean - end_mean)
+    )
+
+    save_times(times, logs['mean'])
 
 def compute():
     """ Function to run computation experiment """
