@@ -1,5 +1,4 @@
 import gc
-from sys import stdout
 from time import clock
 from statistics import mean as py_mean
 from statistics import mean as py_mode
@@ -10,6 +9,9 @@ from stats import mode
 from stats import median
 
 from inputs import inputs
+
+
+MICROSECS = 1000 * 1000
 
 
 logs = {
@@ -25,13 +27,13 @@ def save_times(times, file_name):
     with open(file_name, "a") as file:
         file.write(times)
 
-    print >> stdout, times
+    print(times)
 
 
 def format_times(t0, t1):
     """ Formats the computed times """
 
-    return "%f %f\n" % (t0, t1)
+    return "%.2f %.2f\n" % (t0 * MICROSECS, t1 * MICROSECS)
 
 
 def compute_mean(input_list):
