@@ -18,6 +18,7 @@ logs = {
     "median": "median.log"
 }
 
+
 def save_times(times, file_name):
     """ Writes the computed times in given file """
 
@@ -60,7 +61,23 @@ def compute_mode(input_list):
     end_mode = clock()
 
     times = format_times(end_py_mode - begin_py_mode, end_mode - begin_mode)
-    save_times(times, logs['mean'])
+    save_times(times, logs['mode'])
+
+
+def compute_median(input_list):
+    """ Compute time execution of median of each module """
+
+    begin_py_median = clock()
+    py_median(input_list)
+    end_py_median = clock()
+
+    begin_median = clock()
+    median(input_list)
+    end_median = clock()
+
+    times = format_times(end_py_median - begin_py_median,
+                         end_median - begin_median)
+    save_times(times, logs['median'])
 
 
 def compute():
@@ -74,6 +91,7 @@ def compute():
         for input_list in inputs:
             compute_mean(input_list)
             compute_mode(input_list)
+            compute_median(input_list)
 
     except Exception as e:
         raise e
