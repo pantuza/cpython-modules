@@ -1,6 +1,7 @@
 from os.path import exists
 
 from statistics import mean
+from statistics import stdev
 
 
 input_logs = {
@@ -25,26 +26,36 @@ def check_files():
 
 
 def calculate(input, output):
-
+    """ Loads log files data and calculates mean and standart deviation """
     t0_values = []
     t1_values = []
 
     for line in input:
         t0, t1 = line.split()
 
-        t0_values.append(t0)
-        t1_values.append(t1)
+        t0_values.append(float(t0))
+        t1_values.append(float(t1))
 
     calc_mean(t0_values, t1_values, output)
     calc_stddev(t0_values, t1_values, output)
 
 
 def calc_mean(t0_values, t1_values, output):
-    pass
+    """ Calculates mean of the values """
+
+    t0_mean = mean(t0_values)
+    t1_mean = mean(t1_values)
+
+    output.write("%.2f %.2f " % (t0_mean, t1_mean))
 
 
 def calc_stddev(t0_values, t1_values, output):
-    pass
+    """ Calculates stardart deviation of the values """
+
+    t0_stddev = stdev(t0_values)
+    t1_stddev = stdev(t1_values)
+
+    output.write("%.2f %.2f\n" % (t0_stddev, t1_stddev))
 
 
 def compute():
