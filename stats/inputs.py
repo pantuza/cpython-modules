@@ -1,7 +1,7 @@
 from random import randint
 
 
-MAX_LEN = 100000
+MAX_LEN = 1000
 
 
 def build_list(n_items):
@@ -23,4 +23,5 @@ inputs = []
 
 for i in range(0, MAX_LEN):
 
+    print("Building list %d" % i)
     inputs.append(build_list(randint(1, MAX_LEN)))
