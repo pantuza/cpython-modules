@@ -31,12 +31,18 @@ hello (PyObject *self)
 
 static char hello_docstring[] = "Hello world module for Python written in C";
 
+/**
+ * List of module methods
+ */
 static PyMethodDef module_methods[] = {
     {"hello", (PyCFunction) hello, METH_NOARGS, hello_docstring},
     {NULL, NULL, 0, NULL}
 };
 
 
+/**
+ * Module inicialization function
+ */
 PyMODINIT_FUNC
 initmodule(void)
 {

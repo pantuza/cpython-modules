@@ -133,6 +133,9 @@ median (PyObject *self, PyObject *args)
 }
 
 
+/**
+ * List of module methods
+ */
 static PyMethodDef module_methods[] = {
     {"mean", (PyCFunction) mean, METH_VARARGS, "Calculates mean"},
     {"mode", (PyCFunction) mode, METH_VARARGS, "Calculates mode"},
@@ -140,15 +143,23 @@ static PyMethodDef module_methods[] = {
     {NULL, NULL, 0, NULL}
 };
 
+
+/**
+ * Module definitions
+ */
 static struct PyModuleDef statsmodule = {
     PyModuleDef_HEAD_INIT,
-    "stats",    /* name of module */
+    "stats",  /* name of module */
     "Statistics module for Python written in C",  /* doc string, may be NULL */
-    -1, /* size of per-interpreter state of the module,
+    -1,  /* size of per-interpreter state of the module,
            or -1 if the module keeps state in global variables */
     module_methods   /* methods table */
 };
 
+
+/**
+ * Module initialization function
+ */
 PyMODINIT_FUNC
 PyInit_stats(void)
 {
