@@ -1,4 +1,5 @@
 import gc
+from os import remove
 from time import clock
 from statistics import mean as py_mean
 from statistics import mean as py_mode
@@ -19,6 +20,12 @@ logs = {
     "mode": "mode.log",
     "median": "median.log"
 }
+
+
+def clear_logs():
+    """ Clear logs from previous executions """
+    for file in logs.values():
+        remove(file)
 
 
 def save_times(times, file_name):
@@ -105,4 +112,5 @@ def compute():
 
 if __name__ == "__main__":
 
+    clear_logs()
     compute()
