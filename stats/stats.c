@@ -92,10 +92,44 @@ mode (PyObject *self, PyObject *args)
 }
 
 
+/**
+ * Calculates the median of a given list of integers
+ */
 static PyObject *
 median (PyObject *self, PyObject *args)
 {
-    Py_RETURN_NONE;
+    PyObject* list_obj;
+    PyObject* sequence;
+    PyObject* item;
+
+    if(!PyArg_ParseTuple(args, "O", &list_obj)) {
+
+        return NULL;
+    }
+
+    sequence = PySequence_Fast(list_obj, "Expected a list object");
+    int seq_size = PySequence_Size(list_obj);
+
+    int median = -1;
+    if(seq_size % 2 == 0) {
+
+        int left = seq_size / 2 - 1;
+        int right = seq_size / 2 + 1;
+
+        item = PySequence_Fast_GET_ITEM(sequence, left);
+        int l_int = _PyLong_AsInt(item);
+        item = PySequence_Fast_GET_ITEM(sequence, right);
+        int r_int = _PyLong_AsInt(item);
+
+        median = (l_int + r_int) / 2;
+    } else {
+        int index = (seq_size + 1) / 2 - 1;
+        item = PySequence_Fast_GET_ITEM(sequence, index);
+        median = _PyLong_AsInt(item);
+    }
+    Py_DECREF(sequence);
+
+    return Py_BuildValue("i", median);
 }
 
 
@@ -110,7 +144,7 @@ static struct PyModuleDef statsmodule = {
     PyModuleDef_HEAD_INIT,
     "stats",    /* name of module */
     "Statistics module for Python written in C",  /* doc string, may be NULL */
-    -1, /* size of per-interpreter state of the module, 
+    -1, /* size of per-interpreter state of the module,
            or -1 if the module keeps state in global variables */
     module_methods   /* methods table */
 };
