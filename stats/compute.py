@@ -45,7 +45,7 @@ def save_times(times, file_name):
 def format_times(t0, t1):
     """ Formats the computed times """
 
-    return "%.2f %.2f\n" % (t0 * MICROSECS, t1 * MICROSECS)
+    return "%.2f %.2f" % (t0 * MICROSECS, t1 * MICROSECS)
 
 
 def compute_mean(input_list):
@@ -97,12 +97,14 @@ def compute_median(input_list):
 def compute():
     """ Function to run computation experiment """
 
+    print("Starting computation..")
     gc_ref = gc.isenabled()
     gc.disable()
 
     try:
 
-        for input_list in inputs:
+        for i, input_list in enumerate(inputs):
+            print("input[%d]" % i)
             compute_mean(input_list)
             compute_mode(input_list)
             compute_median(input_list)
@@ -113,6 +115,7 @@ def compute():
     finally:
         if gc_ref:
             gc.enable()
+    print("Computation finished!")
 
 
 if __name__ == "__main__":
