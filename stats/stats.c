@@ -18,7 +18,6 @@
 
 #include <Python.h>
 
-
 /**
  * Calculates the mean of a given list of integers
  */
@@ -49,10 +48,47 @@ mean (PyObject *self, PyObject *args)
 }
 
 
+/**
+ * Calculates the mode of a given list of integers
+ */
 static PyObject *
 mode (PyObject *self, PyObject *args)
 {
-    Py_RETURN_NONE;
+    PyObject* list_obj;
+    PyObject* sequence;
+    PyObject* item_i;
+    PyObject* item_j;
+
+    if (!PyArg_ParseTuple(args, "O", &list_obj)) {
+        return NULL;
+    }
+
+    sequence = PySequence_Fast(list_obj, "Expected a list object");
+    int seq_size = PySequence_Size(list_obj);
+
+    long value = -1;
+    int max_count = 0;
+    for(int i = 0; i < seq_size; i++) {
+
+        int count = 0;
+        item_i = PySequence_Fast_GET_ITEM(sequence, i);
+
+        for(int j = 0; j < seq_size; j++) {
+
+            item_j = PySequence_Fast_GET_ITEM(sequence, j);
+            if(_PyLong_AsInt(item_i) == _PyLong_AsInt(item_j)) {
+                count++;
+            }
+        }
+
+        if(count > max_count) {
+            max_count = count;
+            value = _PyLong_AsInt(item_i);
+        }
+    }
+    Py_DECREF(sequence);
+
+    return Py_BuildValue("i", value);
 }
 
 
