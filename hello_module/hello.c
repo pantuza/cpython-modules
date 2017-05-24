@@ -27,3 +27,11 @@ hello (PyObject *self)
 {
     return Py_BuildValue("s", "Hello Pythonista");
 }
+
+
+static char hello_docstring[] = "Hello world module for Python written in C";
+
+static PyMethodDef module_methods[] = {
+    {"hello", (PyCFunction) hello, METH_NOARGS, hello_docstring},
+    {NULL, NULL, 0, NULL}
+};
