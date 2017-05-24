@@ -35,3 +35,10 @@ static PyMethodDef module_methods[] = {
     {"hello", (PyCFunction) hello, METH_NOARGS, hello_docstring},
     {NULL, NULL, 0, NULL}
 };
+
+
+PyMODINIT_FUNC
+initmodule(void)
+{
+    Py_InitModule("module", module_methods);
+}
