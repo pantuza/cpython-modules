@@ -24,15 +24,20 @@ logs = {
 
 def clear_logs():
     """ Clear logs from previous executions """
+
+    print("Cleaning log files..")
     for file in logs.values():
-        remove(file)
+        try:
+            remove(file)
+        except FileNotFoundError:
+            pass
 
 
 def save_times(times, file_name):
     """ Writes the computed times in given file """
 
     with open(file_name, "a") as file:
-        file.write(times)
+        file.write("%s\n" % times)
 
     print(times)
 
