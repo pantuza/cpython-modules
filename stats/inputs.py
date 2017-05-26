@@ -24,4 +24,4 @@ inputs = []
 for i in range(0, MAX_LEN):
 
     print("Building list %d" % i)
-    inputs.append(build_list(randint(1, MAX_LEN)))
+    inputs.append(build_list(MAX_LEN))
