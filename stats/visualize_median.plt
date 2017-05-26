@@ -12,7 +12,7 @@ set style data histograms
 set boxwidth 1
 set style fill solid 1.0 border rgb "black"
 
-set grid
+set grid ytics
 
 set logscale y
 set yrange [0.1:*]
