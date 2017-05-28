@@ -14,6 +14,8 @@ set style fill solid 1.0 border rgb "black"
 
 set grid ytics
 
+set ylabel "Microseconds in log scale"
+
 set logscale y
 set yrange [0.1:*]
 
