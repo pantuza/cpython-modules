@@ -5,7 +5,7 @@ set terminal 'png' size 800,600
 
 set output 'median-c-module-vs-python-standard-lib.png'
 
-set title 'C module versus Python standard library'
+set title 'Median - C module versus Python standard library' font "Helvetica,20"
 
 set style histogram errorbars gap 1 lw 2
 set style data histograms
