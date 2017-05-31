@@ -55,7 +55,21 @@ mode([1,2,2,2,2,2,3,4,5,6,7])
 median([1,2,3,4,5])
 ```
 
+### Experiments
+
+As an experiment we write a program ```stats/collect.py``` to generate 1000 lists with 1000 integers each.
+Then we compute the time execution in microseconds, for each list, of the Pythoo stardard library *statistics* and the stats C module. Finally, we compute through ```stats/compute.py``` the mean and the stardard deviation of computed times and plot histogram with this values.
+
+```python
+for i, input_list in enumerate(inputs):
+    print("input[%d]" % i)
+    collect_mean(input_list)
+    collect_mode(input_list)
+    collect_median(input_list)
+```
+
 ### Analysis
+
 
 
 ### Author
