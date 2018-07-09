@@ -36,15 +36,23 @@ static char hello_docstring[] = "Hello world module for Python written in C";
  */
 static PyMethodDef module_methods[] = {
     {"hello", (PyCFunction) hello, METH_NOARGS, hello_docstring},
-    {NULL, NULL, 0, NULL}
+    {NULL}
 };
 
+static struct PyModuleDef module =
+{
+    PyModuleDef_HEAD_INIT,
+    "module",
+    "usage: module.create()\n",
+    -1,   /* size of per-interpreter state of the module, or -1 if the module keeps state in global variables. */
+    module_methods
+};
 
 /**
  * Module inicialization function
  */
 PyMODINIT_FUNC
-initmodule(void)
+PyInit_module(void)
 {
-    Py_InitModule("module", module_methods);
+    return PyModule_Create(&module);
 }
