@@ -20,6 +20,24 @@ $> sudo zypper install gcc python3-devel  # For OpenSUSE Linux
 $> sudo apt-get install gcc python3-dev   # For Debian based Linux
 ```
 
+### Using Docker
+
+If you want to try the modules without having to install any external
+dependency you can use Docker for that. In this project we have a `Dockerfile`
+that you can build locally and try the modules as follows:
+
+```bash
+$> docker build --tag cpython:local .
+```
+
+Then you can run a docker container that have the modules inside and you
+can change to its directory and run `python setup.py install` and then open
+a Python shell to try using the functions. One example of container execution
+can be do as shown below:
+
+```bash
+$> docker run -it --rm cpython:local
+```
 
 ## Modules
 
