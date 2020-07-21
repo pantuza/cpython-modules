@@ -43,8 +43,8 @@ $> docker run -it --rm cpython:local
 
 In this project we present two modules:
 
-* Hello world module
-* Statistics module
+* [Hello world module](https://github.com/pantuza/cpython-modules/tree/master/hello_module)
+* [Statistics module](https://github.com/pantuza/cpython-modules/tree/master/stats)
 
 ### Hello world module
 This module creates only one function that prints a 'hello world' message. 
