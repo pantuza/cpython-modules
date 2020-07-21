@@ -9,12 +9,24 @@ Each directory has it own ```setup.py``` file. You can install it using:
 $> python setup.py install
 ```
 
+### Dependencies
+
+In order to python to be able to build C modules you have to make sure your
+operating system has `gcc` and `Python Headers`. You can install it using
+your operating system package manager:
+
+```bash
+$> sudo zypper install gcc python3-devel  # For OpenSUSE Linux
+$> sudo apt-get install gcc python3-dev   # For Debian based Linux
+```
+
+
 ## Modules
 
 In this project we present two modules:
 
-* Hello world module (python 2.7)
-* Statistics module  (python 3.x)
+* Hello world module
+* Statistics module
 
 ### Hello world module
 This module creates only one function that prints a 'hello world' message. 
