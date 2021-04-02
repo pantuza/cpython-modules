@@ -8,7 +8,7 @@
 #
 FROM python:3-alpine
 
-RUN apk add -u gcc musl-dev python3-dev
+RUN apk add -u gcc musl-dev python3-dev vim
 
 RUN pip install ipython
 
