@@ -16,4 +16,4 @@ COPY . /cpython
 
 WORKDIR /cpython
 
-CMD ["/bin/sh"]
+CMD sh
