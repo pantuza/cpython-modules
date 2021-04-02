@@ -98,8 +98,10 @@ for i, input_list in enumerate(inputs):
     collect_median(input_list)
 ```
 
-### Analysis
+### Reference material
+I wrote a blog post explaining how to [wrap C libraries into Python modules](https://blog.pantuza.com/tutoriais/criando-modulos-python-atraves-de-extensoes-em-c) (pt-BR).
 
+[Slides of the presentation](https://speakerdeck.com/pantuza/wrapping-c-libraries-into-python-modules) that uses this project.
 
 
 ### Author
